@@ -79,6 +79,7 @@ esp_lcd_touch_handle_t tp = NULL;
 #endif
 
 extern void example_lvgl_demo_ui(lv_disp_t *disp);
+extern void example_lvgl_entry(lv_disp_t *disp);
 
 static bool example_notify_lvgl_flush_ready(esp_lcd_panel_io_handle_t panel_io, esp_lcd_panel_io_event_data_t *edata, void *user_ctx)
 {
@@ -436,7 +437,8 @@ void app_main(void)
     // Lock the mutex due to the LVGL APIs are not thread-safe
     if (example_lvgl_lock(-1)) {
         ESP_LOGI(TAG, "example_lvgl_demo_ui");
-        example_lvgl_demo_ui(disp);
+        // example_lvgl_demo_ui(disp);
+        example_lvgl_entry(disp);
         // Release the mutex
         example_lvgl_unlock();
     }
